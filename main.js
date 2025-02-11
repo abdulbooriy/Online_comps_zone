@@ -9,6 +9,8 @@ const app = express();
 app.use(express.json());
 app.use('/api', mainRoute);
 
+app.use('/image', express.static('./uploads'));
+
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });

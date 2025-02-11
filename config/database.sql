@@ -8,7 +8,7 @@ CREATE TABLE users (
     name VARCHAR(255) NOT NULL,
     phone VARCHAR(15) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role ENUM ('admin', 'user') NOT NULL
+    role ENUM ('admin', 'user') NOT NULL DEFAULT 'user'
 )
 
 CREATE TABLE product (
@@ -23,7 +23,7 @@ CREATE TABLE product (
 
 CREATE TABLE room (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    roomNumber INT NOT NULL,
+    roomNumber INT,
     count INT NOT NULL,
     price DECIMAL(10, 2),
     image VARCHAR(255) NOT NULL,
@@ -46,8 +46,8 @@ CREATE TABLE orderComp (
     FOREIGN KEY (productId) REFERENCES product (id),
     orderId INT NOT NULL,
     FOREIGN KEY (orderId) REFERENCES orders (id),
-    startTime DATETIME NOT NULL,
-    endtTime DATETIME NOT NULL,
+    startTime TIME NOT NULL,
+    endTime TIME NOT NULL,
     vipTime BOOLEAN NOT NULL DEFAULT FALSE,
     summa DECIMAL(10, 2) NOT NULL,
     roomId INT NOT NULL,
